@@ -207,6 +207,9 @@
     padding: 2rem;
     border: 1px solid var(--card-border);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
 }
 
 .project-card:hover {
@@ -218,7 +221,7 @@
 .project-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 0.75rem;
     gap: 1rem;
 }
@@ -228,6 +231,7 @@
     font-weight: 600;
     color: var(--text-primary);
     margin: 0;
+    line-height: 1.4;
 }
 
 .project-year {
@@ -240,6 +244,7 @@
     border: 1px solid var(--card-border);
     white-space: nowrap;
     flex-shrink: 0;
+    align-self: flex-start;
 }
 
 .project-skills {
@@ -250,6 +255,9 @@
 
 .project-description-container {
     margin-bottom: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-description {
@@ -257,6 +265,7 @@
     line-height: 1.6;
     color: var(--text-tertiary);
     transition: all 0.3s ease;
+    flex-grow: 1;
 }
 
 .read-more-btn {
@@ -271,12 +280,6 @@
     cursor: pointer;
     padding: 0.5rem 0;
     transition: all 0.2s ease;
-    font-family: inherit;
-}
-
-.read-more-btn:hover {
-    color: var(--accent-secondary);
-    gap: 0.75rem;
 }
 
 .read-more-btn svg {
@@ -287,12 +290,38 @@
     transform: rotate(180deg);
 }
 
-/* ===========================
-   PROJECTS SECTION
-   =========================== */
+.project-details {
+    margin: 1rem 0 0 1.25rem;
+    padding: 0;
+    list-style: disc;
+}
 
-.projects-section {
-    background: var(--bg-primary);
+.project-details li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+}
+
+.project-details li:last-child {
+    margin-bottom: 0;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+}
+
+.project-link:hover {
+    color: var(--accent-secondary);
+    gap: 0.5rem;
 }
 
 .projects-showcase {
