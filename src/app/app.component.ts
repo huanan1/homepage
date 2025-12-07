@@ -13,24 +13,34 @@ export class AppComponent implements OnInit {
   // Project data with expanded state
   projects = [
     {
-      "id": 1,
+      "title": "Upstream Integration",
+      "year": "2025",
+      "skills": "Kafka, Java, Troubleshooting",
+      "shortDescription": "Integrated encrypted Kafka upstream into legacy system, resolving critical dependency conflicts to enable successful production rollout.",
+      "details": [
+        "Integrated new Kafka data source with vendor encryption framework into existing real-time processing pipeline",
+        "Resolved dependency conflicts between encryption library and legacy codebase through cross-team troubleshooting",
+        "Minimized code changes by strategically reusing existing data flow patterns, reducing deployment risk",
+      ],
+      expanded: false
+    },
+    {
       "title": "Real-Time App Kafka Migration",
       "year": "2024",
-      "skills": "Kafka, Java, Concurrency Optimization, Linux, DevOps",
-      "shortDescription": "Designed and developed the migration of a critical real-time application processing 1B+ transactions/day from batch processing to stream processing on Kafka.",
+      "skills": "Kafka, Java, Concurrency",
+      "shortDescription": "Migrated a critical real-time application processing 1B+ transactions/day from batch to stream processing on Kafka.",
       "details": [
         "Engineered and migrated high-throughput systems (~terabytes/day) from file-based and MQ systems to Kafka.",
         "Pieced together efforts from previous year and developers and merged these changes across several repositories to the current codebase",
         "Found existing bugs and fixed them to get the project to a steady state, which allowed more team members to join",
-        "Led the discussion for several design initiatives and proposed several designs from which the team chose to implement",
+        "Led the discussion for several design decisions and proposed several designs from which the team chose to implement",
         "Ensured no performance impact to production despite additional processing through concurrency optimizations and tuning of Kafka configurations.",
       ]
     },
     {
-      "id": 2,
       "title": "Config-as-code POC",
       "year": "2023",
-      "skills": "Process Design",
+      "skills": "Software Design",
       "shortDescription": "Designed a technology-agnostic configuration management process that significantly reduces the time for config management.",
       "details": [
         "Designed a configuration management process that reduces the time taken for config management by up to 80%.",
@@ -39,32 +49,48 @@ export class AppComponent implements OnInit {
       ]
     },
     {
-      "id": 3,
       "title": "Web Accessibility Revamp",
       "year": "2023",
-      "skills": "Angular, TypeScript, Web Accessibility, JavaScript, HTML, CSS",
+      "skills": "Angular, Web Accessibility, TypeScript",
       "shortDescription": "Spearheaded the revamp of an internal web application to comply with Visa Global Accessibility Requirements.",
       "details": [
-        "Spearheaded the revamp of an internal web application to comply with Visa Global Accessibility Requirements.",
         "Addressed over 200 accessibility findings across 10+ pages, ensuring usability for people with disabilities.",
-        "Led the development and project coordination effort to achieve compliance for an internal web app (Angular)."
+        "Led the development and project coordination effort to achieve compliance for an internal web app."
       ]
     },
     {
-      "id": 4,
-      "title": "Web App Development",
-      "year": "2021 - 2023",
+      "title": "Feature Development",
+      "year": "2022 - 2023",
       "skills": "Java, Angular, Data Visualization, Authentication",
-      "shortDescription": "Developed and maintained features for internal risk management applications.",
+      "shortDescription": "Worked on backlog of requests and developed various features for internal risk management applications.",
       "details": [
         "Implemented secure authentication and integrated real-time data visualization features to monitor performance of models and systems supporting fraud prevention.",
         "Developed and maintained features for internal applications supporting risk management in Visa (Java/Angular).",
       ]
     },
     {
-      "id": 5,
+      "title": "Application Migration to Higher Availability Setup",
+      "year": "2022",
+      "skills": "Project Coordination, Troubleshooting, Linux, DevOps",
+      "shortDescription": "Coordinated a project to migrate a critical application to a new higher availability (HA) dual-datacenter setup.",
+      "details": [
+        "Handled the planning and coordination efforts across 5 teams, ranging from network, firewall, Splunk, Cybersecurity to the QA and Dev within our team, required to migrate an application to a higher availability set-up.",
+        "Proactively provided timely updates to stakeholders and resolved issues that arose during the migration process.",
+      ]
+    },
+    {
+      "title": "Documentation & SOP",
+      "year": "2020 - 2021",
+      "skills": "Technical Writing, Incident Management, Process Improvement, Documentation",
+      "shortDescription": "Led efforts to improve standard operating procedures (SOPs) and knowledge transfer for incident response and team operations.",
+      "details": [
+        "Drove efforts to have better SOPs by authoring and updating over 30 articles related to incident response and more.",
+        "Shared knowledge on various work activities through clear documentations, speeding up onboarding and enabling backups in the team.",
+      ]
+    },
+    {
       "title": "Manual Process Automation",
-      "year": "2020/21",
+      "year": "2020 - 2021",
       "skills": "Python, Bash, Scripting, Jenkins, Automation",
       "shortDescription": "Proactively automated manual and repetitive operational processes, resulting in significant time savings.",
       "details": [
@@ -74,11 +100,10 @@ export class AppComponent implements OnInit {
       ]
     },
     {
-      "id": 6,
       "title": "Live Datacenter Switching Interface",
       "year": "2019",
       "skills": "Java, Spring, Angular, Frontend/Backend Development",
-      "shortDescription": "Developed an interface to allow authorized users to switch the active data center for a major application.",
+      "shortDescription": "Developed an interface to allow authorized users to switch the active data center.",
       "details": [
         "Developed an interface for live datacenter switching (Java/Spring, Angular).",
         "The interface allows authorized users to switch the active data center for a major application, along with the display of its execution status.",
@@ -119,8 +144,8 @@ export class AppComponent implements OnInit {
     }
   }
 
-  toggleProject(projectId: number) {
-    const project = this.projects.find(p => p.id === projectId);
+  toggleProject(projectIdx: number) {
+    const project = this.projects.at(projectIdx);
     if (project) {
       project.expanded = !project.expanded;
     }

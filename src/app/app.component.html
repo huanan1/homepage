@@ -67,11 +67,13 @@
       <div class="experience-card">
         <h3 class="job-title">Senior Software Engineer at Visa</h3>
         <p class="job-description">
-          I've worked at Visa for over 5 years, during which I took on various projects in the team.
+          I've worked at Visa for over 5 years in a team which supports rules engines and data pipelines for fraud
+          detection in a high-volume, low-latency environment.
         </p>
 
         <div class="projects-grid">
-          <div class="project-card" *ngFor="let project of projects">
+          <button class="project-card" *ngFor="let project of projects; let i = index" (click)="toggleProject(i)"
+            [attr.aria-expanded]="project.expanded">
             <div class="project-header">
               <h4 class="project-title">{{ project.title }}</h4>
               <span class="project-year">{{ project.year }}</span>
@@ -85,15 +87,15 @@
                 <li *ngFor="let detail of project.details">{{ detail }}</li>
               </ul>
             </div>
-            <button class="read-more-btn" (click)="toggleProject(project.id)" [attr.aria-expanded]="project.expanded">
+            <div class="read-more-btn" *ngIf="project.expanded">
               {{ project.expanded ? 'Read Less' : 'Read More' }}
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 [class.rotated]="project.expanded">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
-            </button>
-          </div>
+            </div>
+          </button>
         </div>
       </div>
     </div>
