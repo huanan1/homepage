@@ -120,7 +120,7 @@ export class AppComponent implements OnInit {
       "title": "Automated Threat Modelling in DevSecOps (Capstone)",
       "year": "2020",
       "skills": "Python, Selenium, Pandas, Design Thinking, Security",
-      "shortDescription": "Developed an intuitive tool for presenting security threats and mitigations based on software project components.",
+      "shortDescription": "Developed the backend code for the generation of attack trees by extracting relevant data from multiple threat libraries using Python.",
       "link": "https://youtu.be/T8Hg9cVfqzc",
       "details": [
         "Created an intuitive, actionable tool that presents security threats and mitigations based on the components of a software project.",
@@ -131,11 +131,8 @@ export class AppComponent implements OnInit {
       "title": "Blockchain Project - SUTDcoin",
       "year": "2020",
       "skills": "Python, Blockchain Simulation",
-      "shortDescription": "Simulated a blockchain in Python demonstrating core activities and attacks.",
+      "shortDescription": "Simulated a blockchain in Python demonstrating validation of transactions, ledger system, double-spending attack and selfish-mining.",
       "link": "https://github.com/huanan1/50.037-Blockchain",
-      "details": [
-        "Simulated a blockchain in Python demonstrating validation of transactions, ledger system, double-spending attack and selfish-mining."
-      ]
     },
   ];
   showAllProjects: boolean = false;
