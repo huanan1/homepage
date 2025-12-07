@@ -1,0 +1,215 @@
+<!-- Sticky Header -->
+<header class="header">
+  <nav class="nav-container">
+    <div class="nav-links">
+      <a (click)="scrollToSection('about')" [class.active]="activeSection === 'about'" class="nav-link">
+        About
+      </a>
+      <a (click)="scrollToSection('experience')" [class.active]="activeSection === 'experience'" class="nav-link">
+        Experience
+      </a>
+      <a (click)="scrollToSection('projects')" [class.active]="activeSection === 'projects'" class="nav-link">
+        Projects
+      </a>
+      <a (click)="scrollToSection('contact')" [class.active]="activeSection === 'contact'" class="nav-link">
+        Contact
+      </a>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" (click)="toggleTheme()"
+      [attr.aria-label]="isDarkTheme ? 'Switch to light mode' : 'Switch to dark mode'">
+      <svg *ngIf="!isDarkTheme" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg *ngIf="isDarkTheme" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="about-content">
+        <h1 class="hero-title">Hello, I'm <span class="gradient-text">Huan An</span></h1>
+        <p class="hero-description">
+          I'm a <span class="highlight">software engineer</span> based in sunny Singapore. I love tackling
+          <span class="highlight">challenging problems</span>—whether working solo or as part of a team—and I'm always
+          excited to <span class="highlight">learn new technologies</span> along the way. Over the years, I've had the
+          opportunity to work on some really interesting <span class="highlight">large-scale projects</span>, and I
+          enjoy
+          seeing them through from start to finish.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+
+      <div class="experience-card">
+        <h3 class="job-title">Senior Software Engineer at Visa</h3>
+        <p class="job-description">
+          I've worked at Visa for over 5 years, during which I took on various projects in the team.
+        </p>
+
+        <div class="projects-grid">
+          <div class="project-card" *ngFor="let project of projects">
+            <div class="project-header">
+              <h4 class="project-title">{{ project.title }}</h4>
+              <span class="project-year">{{ project.year }}</span>
+            </div>
+            <p class="project-skills"><strong>Skills:</strong> {{ project.skills }}</p>
+
+            <div class="project-description-container">
+              <p class="project-description" [class.expanded]="project.expanded">
+                {{ project.expanded ? project.fullDescription : project.shortDescription }}
+              </p>
+            </div>
+
+            <button class="read-more-btn" (click)="toggleProject(project.id)" [attr.aria-expanded]="project.expanded">
+              {{ project.expanded ? 'Read Less' : 'Read More' }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                [class.rotated]="project.expanded">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="projects-showcase">
+        <div class="showcase-card">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3 class="card-title">Open Source Contributions</h3>
+          <p class="card-description">
+            Contributing to various open-source projects, focusing on improving developer experience and code quality.
+          </p>
+          <div class="card-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+
+        <div class="showcase-card">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <h3 class="card-title">Personal Projects</h3>
+          <p class="card-description">
+            Building innovative web applications and tools to solve real-world problems and explore new technologies.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Angular</span>
+            <span class="tag">Python</span>
+            <span class="tag">AWS</span>
+          </div>
+        </div>
+
+        <div class="showcase-card">
+          <div class="card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3 class="card-title">Technical Writing</h3>
+          <p class="card-description">
+            Sharing knowledge through blog posts and tutorials on software engineering best practices and emerging
+            technologies.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Documentation</span>
+            <span class="tag">Tutorials</span>
+            <span class="tag">Best Practices</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-description">
+        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:your.email@example.com" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>your.email@example.com</span>
+        </a>
+
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+          <span>github.com/yourusername</span>
+        </a>
+
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+          <span>linkedin.com/in/yourprofile</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Huan An. All rights reserved.</p>
+  </div>
+</footer>
