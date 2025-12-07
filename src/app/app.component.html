@@ -116,12 +116,12 @@
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="section projects-section">
+  <!-- <section id="projects" class="section projects-section">
     <div class="container">
       <h2 class="section-title">Projects</h2>
 
       <div class="projects-showcase">
-        <div class="showcase-card">
+        <div class="showcase-card" *ngFor="let project of personalProjects">
           <div class="card-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -129,59 +129,26 @@
               <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
           </div>
-          <h3 class="card-title">Open Source Contributions</h3>
+          <h3 class="card-title">{{ project.title }}</h3>
           <p class="card-description">
-            Contributing to various open-source projects, focusing on improving developer experience and code quality.
+            {{ project.shortDescription }}
           </p>
           <div class="card-tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">React</span>
-            <span class="tag">Node.js</span>
+            <span class="tag" *ngFor="let skill of project.skills.split(', ')">{{ skill }}</span>
           </div>
-        </div>
-
-        <div class="showcase-card">
-          <div class="card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+          <a *ngIf="project.link" [href]="project.link" target="_blank" rel="noopener noreferrer" class="project-link">
+            View Project
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
-          </div>
-          <h3 class="card-title">Personal Projects</h3>
-          <p class="card-description">
-            Building innovative web applications and tools to solve real-world problems and explore new technologies.
-          </p>
-          <div class="card-tags">
-            <span class="tag">Angular</span>
-            <span class="tag">Python</span>
-            <span class="tag">AWS</span>
-          </div>
-        </div>
-
-        <div class="showcase-card">
-          <div class="card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-              <path d="M2 17l10 5 10-5"></path>
-              <path d="M2 12l10 5 10-5"></path>
-            </svg>
-          </div>
-          <h3 class="card-title">Technical Writing</h3>
-          <p class="card-description">
-            Sharing knowledge through blog posts and tutorials on software engineering best practices and emerging
-            technologies.
-          </p>
-          <div class="card-tags">
-            <span class="tag">Documentation</span>
-            <span class="tag">Tutorials</span>
-            <span class="tag">Best Practices</span>
-          </div>
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Contact Section -->
   <section id="contact" class="section contact-section">
