@@ -112,6 +112,7 @@ export class AppComponent implements OnInit {
       expanded: false
     }
   ];
+  showAllProjects: boolean = false;
 
 
   ngOnInit() {
@@ -149,6 +150,10 @@ export class AppComponent implements OnInit {
     if (project) {
       project.expanded = !project.expanded;
     }
+  }
+
+  toggleShowAllProjects() {
+    this.showAllProjects = !this.showAllProjects;
   }
 
   @HostListener('window:scroll', [])

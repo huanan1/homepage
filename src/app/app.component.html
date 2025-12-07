@@ -48,12 +48,14 @@
       <div class="about-content">
         <h1 class="hero-title">Hello, I'm <span class="gradient-text">Huan An</span></h1>
         <p class="hero-description">
-          I'm a <span class="highlight">software engineer</span> based in Singapore. I enjoy tackling
-          <span class="highlight">challenging problems</span> and I'm always
-          excited to <span class="highlight">learn new technologies</span> along the way. Over the years, I've had the
-          opportunity to work on some really interesting <span class="highlight">large-scale projects</span>, and I
-          find satisfaction in
-          seeing them through from start to finish.
+          I'm a <span class="highlight">software engineer</span> based in Singapore. I enjoy delivering value through
+          <span class="highlight">clean and performant solutions</span>. I'm <span class="highlight">proactive,
+            collaborative</span> and have a track
+          record of <span class="highlight">getting things done</span>. Over the years, I've had the
+          opportunity to drive various projects, including
+          the transition of a system processing over a <span class="highlight">billion transactions</span> per
+          day from batch to stream
+          processing using Kafka.
         </p>
       </div>
     </div>
@@ -72,8 +74,9 @@
         </p>
 
         <div class="projects-grid">
-          <button class="project-card" *ngFor="let project of projects; let i = index" (click)="toggleProject(i)"
-            [attr.aria-expanded]="project.expanded">
+          <button class="project-card"
+            *ngFor="let project of projects | slice:0:(showAllProjects ? projects.length : 3); let i = index"
+            (click)="toggleProject(i)" [attr.aria-expanded]="project.expanded">
             <div class="project-header">
               <h4 class="project-title">{{ project.title }}</h4>
               <span class="project-year">{{ project.year }}</span>
@@ -95,6 +98,17 @@
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </div>
+          </button>
+        </div>
+
+        <div class="show-more-container" *ngIf="projects.length > 3">
+          <button class="show-more-projects-btn" (click)="toggleShowAllProjects()">
+            {{ showAllProjects ? 'Show Less' : 'Show All' }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              [class.rotated]="showAllProjects">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
           </button>
         </div>
       </div>
